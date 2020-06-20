@@ -8,12 +8,21 @@ namespace BankAccountKata
 {
     public class Account
     {
-        public decimal Balance
+        private IAccountManager _accountManager;
+
+        public Account(IAccountManager accountManager)
         {
-            get
-            {
-                return 0;
-            }
+            _accountManager = accountManager;
+        }
+
+        public decimal GetBalance()
+        {
+            return _accountManager.GetBalance();
+        }
+
+        public void Deposit(decimal amount)
+        {
+            _accountManager.Deposit(amount);
         }
     }
 }

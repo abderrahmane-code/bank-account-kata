@@ -1,0 +1,10 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/BankAccountKata/obj/Debug
+/BankAccountKata.Tests/bin/Debug
+/BankAccountKata.Tests/obj/Debug
+/packages
+/BankAccountKata/bin/Debug
+/.vs/BankAccountKata/v15
