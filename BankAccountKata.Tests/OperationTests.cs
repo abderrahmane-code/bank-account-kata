@@ -15,5 +15,17 @@ namespace BankAccountKata.Tests
 
             Assert.AreEqual(expectedOperation, actualOperation);
         }
+
+        [TestMethod]
+        public void Should_Format_Operation()
+        {
+            string expectedResult = "Deposit || 21/06/2020 || 200,00";
+
+            Operation operation = new Operation(200, new DateTime(2020, 06, 21), OperationType.Deposit);
+
+            string actualResult = operation.ToString();
+
+            Assert.AreEqual(expectedResult, actualResult);
+        }
     }
 }

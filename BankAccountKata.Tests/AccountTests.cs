@@ -9,13 +9,15 @@ namespace BankAccountKata.Tests
     {
 
         private IAccountManager accountManager;
+        private IOperationFormatter operationFormatter;
         private Account account;
 
         [TestInitialize]
         public void Setup()
         {
             accountManager = new AccountManager();
-            account = new Account(accountManager);
+            operationFormatter = new OperationFormatter();
+            account = new Account(accountManager, operationFormatter);
         }
 
         [TestMethod]
@@ -81,23 +83,6 @@ namespace BankAccountKata.Tests
 
             Assert.AreEqual(expectedBalance, actualBalance);
         }
-
-        [TestMethod]
-        public void Should_Have_The_Exact_History_List_After_Performing_Multiple_Operations()
-        {
-            List<Operation> expectedOperationsHistory = new List<Operation>
-            {
-                new Operation(1000, DateTime.Today, OperationType.Deposit),
-                new Operation(500, DateTime.Today, OperationType.Deposit),
-                new Operation(1000, DateTime.Today, OperationType.Withdraw),
-            };
-
-            account.Deposit(1000);
-            account.Deposit(500);
-            account.Withdraw(1000);
-            List<Operation> actualOperationsHistory = account.GetOperations();
-
-            CollectionAssert.AreEqual(expectedOperationsHistory, actualOperationsHistory);
-        }
+        
     }
 }

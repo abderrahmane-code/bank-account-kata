@@ -9,10 +9,12 @@ namespace BankAccountKata
     public class Account
     {
         private IAccountManager _accountManager;
+        private IOperationFormatter _operationFormatter;
 
-        public Account(IAccountManager accountManager)
+        public Account(IAccountManager accountManager, IOperationFormatter operationFormatter)
         {
             _accountManager = accountManager;
+            _operationFormatter = operationFormatter;
         }
 
         public decimal GetBalance()
@@ -30,9 +32,10 @@ namespace BankAccountKata
             _accountManager.Withdraw(amount);
         }
 
-        public List<Operation> GetOperations()
+        public List<String> GetOperations()
         {
-            return _accountManager.GetOperations();
+            List<Operation> operations = _accountManager.GetOperations();
+            return _operationFormatter.Format(operations);
         }
     }
 }

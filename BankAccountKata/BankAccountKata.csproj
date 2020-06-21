@@ -43,7 +43,9 @@
     <Compile Include="Account.cs" />
     <Compile Include="AccountManager.cs" />
     <Compile Include="IAccountManager.cs" />
+    <Compile Include="IOperationFormatter.cs" />
     <Compile Include="Operation.cs" />
+    <Compile Include="OperationFormatter.cs" />
     <Compile Include="OperationType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -33,5 +33,14 @@ namespace BankAccountKata
                 && this.Type == operation.Type;
         }
 
+        public override string ToString()
+        {
+            string type = (this.Type == OperationType.Deposit) ? "Deposit" : "Withdraw";
+            string date = this.Date.ToString("dd/MM/yyyy");
+            string amount = String.Format("{0:0.00}", this.Amount);
+
+            return $"{type} || {date} || {amount}";
+        }
+
     }
 }
