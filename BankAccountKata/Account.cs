@@ -24,5 +24,10 @@ namespace BankAccountKata
         {
             _accountManager.Deposit(amount);
         }
+
+        public void Withdraw(decimal amount)
+        {
+            _accountManager.Withdraw(amount);
+        }
     }
 }

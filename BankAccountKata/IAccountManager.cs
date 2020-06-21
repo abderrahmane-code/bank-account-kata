@@ -11,5 +11,7 @@ namespace BankAccountKata
         decimal GetBalance();
 
         void Deposit(decimal amount);
+
+        void Withdraw(decimal amount);
     }
 }

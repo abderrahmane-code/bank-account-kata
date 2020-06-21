@@ -53,5 +53,32 @@ namespace BankAccountKata.Tests
 
             Assert.AreEqual(expectedBalance, actualBalance);
         }
+
+        [TestMethod]
+        public void Should_Throw_Argument_Exception_When_Withdrawn_Amount_Is_Negative()
+        {
+            decimal amount = -30;
+
+            Assert.ThrowsException<ArgumentException>(() => account.Withdraw(amount));
+        }
+
+        [TestMethod]
+        public void Should_Throw_Argument_Exception_When_Withdrawn_Amount_Is_0()
+        {
+            decimal amount = 0;
+
+            Assert.ThrowsException<ArgumentException>(() => account.Withdraw(amount));
+        }
+
+        [TestMethod]
+        public void Should_Have_A_Decreased_Balance_After_A_Withdraw()
+        {
+            decimal expectedBalance = -100;
+
+            account.Withdraw(100);
+            decimal actualBalance = account.GetBalance();
+
+            Assert.AreEqual(expectedBalance, actualBalance);
+        }
     }
 }

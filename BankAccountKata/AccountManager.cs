@@ -22,6 +22,13 @@ namespace BankAccountKata
 
             _balance += amount;
         }
-        
+
+        public void Withdraw(decimal amount)
+        {
+            if (amount <= 0)
+                throw new ArgumentException();
+
+            _balance -= amount;
+        }
     }
 }
