@@ -13,5 +13,7 @@ namespace BankAccountKata
         void Deposit(decimal amount);
 
         void Withdraw(decimal amount);
+
+        List<Operation> GetOperations();
     }
 }

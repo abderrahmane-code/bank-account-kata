@@ -9,6 +9,7 @@ namespace BankAccountKata
     public class AccountManager : IAccountManager
     {
         private decimal _balance = 0;
+        private List<Operation> _operations = new List<Operation>();
 
         public decimal GetBalance()
         {
@@ -21,6 +22,7 @@ namespace BankAccountKata
                 throw new ArgumentException();
 
             _balance += amount;
+            _operations.Add(new Operation(amount, DateTime.Today, OperationType.Deposit));
         }
 
         public void Withdraw(decimal amount)
@@ -29,6 +31,12 @@ namespace BankAccountKata
                 throw new ArgumentException();
 
             _balance -= amount;
+            _operations.Add(new Operation(amount, DateTime.Today, OperationType.Withdraw));
+        }
+
+        public List<Operation> GetOperations()
+        {
+            return _operations;
         }
     }
 }

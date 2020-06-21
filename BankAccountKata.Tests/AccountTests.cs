@@ -1,5 +1,6 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System.Collections.Generic;
 
 namespace BankAccountKata.Tests
 {
@@ -79,6 +80,24 @@ namespace BankAccountKata.Tests
             decimal actualBalance = account.GetBalance();
 
             Assert.AreEqual(expectedBalance, actualBalance);
+        }
+
+        [TestMethod]
+        public void Should_Have_The_Exact_History_List_After_Performing_Multiple_Operations()
+        {
+            List<Operation> expectedOperationsHistory = new List<Operation>
+            {
+                new Operation(1000, DateTime.Today, OperationType.Deposit),
+                new Operation(500, DateTime.Today, OperationType.Deposit),
+                new Operation(1000, DateTime.Today, OperationType.Withdraw),
+            };
+
+            account.Deposit(1000);
+            account.Deposit(500);
+            account.Withdraw(1000);
+            List<Operation> actualOperationsHistory = account.GetOperations();
+
+            CollectionAssert.AreEqual(expectedOperationsHistory, actualOperationsHistory);
         }
     }
 }

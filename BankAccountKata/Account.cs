@@ -29,5 +29,10 @@ namespace BankAccountKata
         {
             _accountManager.Withdraw(amount);
         }
+
+        public List<Operation> GetOperations()
+        {
+            return _accountManager.GetOperations();
+        }
     }
 }
